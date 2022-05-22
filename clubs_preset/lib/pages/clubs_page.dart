@@ -1,8 +1,7 @@
 import 'dart:async';
-
-import 'package:clubs/api.dart';
-import 'package:clubs/models/club.dart';
-import 'package:clubs/pages/clubs_page.i18n.dart';
+import 'package:clubs_preset/api.dart';
+import 'package:clubs_preset/models/club.dart';
+import 'package:clubs_preset/pages/clubs_page.i18n.dart';
 import 'package:flutter/material.dart';
 
 class ClubsPage extends StatefulWidget {
