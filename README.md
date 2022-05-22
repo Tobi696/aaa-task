@@ -40,3 +40,9 @@
 - FutureBuilder
 
 ![img/detailview.png](img/detailview.png)
+
+# Lösung
+
+## App
+
+im Ordner "clubs", normale Flutter-App nach Anforderungen
