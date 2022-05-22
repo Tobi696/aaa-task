@@ -4,6 +4,7 @@ extension Localization on String {
   static final _t = Translations("de_de") +
       {
         "de_de": "all about clubs",
+        // "pl_pl": "o klubach",
       } +
       {
         "de_de": "%d Millionen".one("1 Million").many("%d Millionen"),

@@ -53,6 +53,74 @@ class _ClubPageState extends State<ClubPage> {
       appBar: AppBar(
         title: Text(error ?? club?.name ?? "Laden...".i18n),
       ),
+      body: loading
+          ? const Center(child: CircularProgressIndicator())
+          : club == null
+              ? Center(child: Text(error!))
+              : SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Container(
+                        height: 210,
+                        color: Colors.grey.shade800,
+                        child: Stack(
+                          children: [
+                            Center(
+                              child: Image(
+                                image: club!.image,
+                                height: 120,
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 10,
+                              left: 10,
+                              child: Text(
+                                club!.country,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            RichText(
+                              text: TextSpan(
+                                style: Theme.of(context).textTheme.bodyText1,
+                                children: [
+                                  TextSpan(
+                                    text: "${"Der Club".i18n} ",
+                                  ),
+                                  TextSpan(
+                                    text: club!.name,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text:
+                                        " ${"aus".i18n} ${club!.country} ${"hat einen Wert von".i18n} ${"%d Millionen".plural(club!.value)} ${"Euro".i18n}.",
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              "${club!.name} ${"konnte bislang".i18n} ${"%d Siege".plural(club!.europeanTitles)} ${"auf europäischer Ebene erreichen".i18n}.",
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
     );
   }
 }

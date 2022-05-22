@@ -3,6 +3,7 @@ import 'package:clubs/pages/clubs_page.dart';
 import 'package:clubs/pages/not_found_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as $material;
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:i18n_extension/i18n_widget.dart';
 
 List<Route> routes = [
@@ -41,6 +42,16 @@ class ClubsApp extends StatelessWidget {
       initialLocale: const Locale("de", "DE"),
       child: MaterialApp(
         title: "Clubs",
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale("de", "DE"),
+          // Locale("en", "US"),
+          // Locale("pl", "PL")
+        ],
         onGenerateRoute: onGenerateRoute,
         onUnknownRoute: onUnknownRoute,
         color: primaryColor,
