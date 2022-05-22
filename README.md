@@ -20,7 +20,7 @@
 
 ## Api
 
-![api.png](api.png)
+![img/api.png](img/api.png)
 
 ## Design
 
@@ -32,11 +32,11 @@
 - StreamBuilder > ListView
 - Toggle ->
 
-![design-listview.png](design-listview.png)
+![img/design-listview.png](img/design-listview.png)
 
 ### Vereine Detailansicht
 
 - Route: /club/:id
 - FutureBuilder
 
-![detailview.png](detailview.png)
+![img/detailview.png](img/detailview.png)
