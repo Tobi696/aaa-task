@@ -1,10 +1,23 @@
-import 'package:clubs/pages/not_found.dart';
+import 'package:clubs/pages/club_page.dart';
+import 'package:clubs/pages/clubs_page.dart';
+import 'package:clubs/pages/not_found_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as $material;
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:i18n_extension/i18n_widget.dart';
 
-List<Route> routes = [];
+List<Route> routes = [
+  Route(
+    '/',
+    (context) => const ClubsPage(),
+  ),
+  Route(
+    '/clubs/[0-9a-z\\-]+',
+    (context) => ClubPage(
+      clubId: ModalRoute.of(context)!.settings.name!.split("/")[2],
+    ),
+  ),
+];
+
 const primaryColor = Color(0xFF01C13B);
 final primaryMaterialColor = MaterialColor(0xFF01C13B, {
   50: primaryColor.withOpacity(0.1),
@@ -24,13 +37,22 @@ class ClubsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Clubs",
-      onGenerateRoute: onGenerateRoute,
-      onUnknownRoute: onUnknownRoute,
-      color: primaryColor,
-      initialRoute: '/',
-      theme: ThemeData(primarySwatch: primaryMaterialColor),
+    return I18n(
+      initialLocale: const Locale("de", "DE"),
+      child: MaterialApp(
+        title: "Clubs",
+        onGenerateRoute: onGenerateRoute,
+        onUnknownRoute: onUnknownRoute,
+        color: primaryColor,
+        initialRoute: '/',
+        theme: ThemeData(
+          primarySwatch: primaryMaterialColor,
+          colorScheme: ThemeData.fallback().colorScheme.copyWith(
+                primary: primaryColor,
+                onPrimary: Colors.white,
+              ),
+        ),
+      ),
     );
   }
 }
@@ -54,7 +76,7 @@ $material.Route<dynamic>? onGenerateRoute(RouteSettings settings) {
 
 $material.Route<dynamic>? onUnknownRoute(RouteSettings settings) =>
     MaterialPageRoute(
-      builder: (context) => const NotFound(),
+      builder: (context) => const NotFoundPage(),
     );
 
 class Route {
